@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Influencers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 30px 20px; /* increased padding */
+            text-align: center;
+            font-size: 2.5rem; /* increased font size */
+            font-weight: bold;
+        }
+
+        .search-container {
+            text-align: center;
+            margin: 60px 0; /* increased margin */
+        }
+
+        .search-container input {
+            width: 80%;
+            max-width: 600px;
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            outline: none;
+            text-align: center;
+        }
+
+        .benefits {
+            text-align: center;
+            margin: 40px auto; /* increased margin */
+            padding: 40px; /* increased padding */
+            background-color: #fff;
+            border-radius: 10px;
+            max-width: 80%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .filters {
+            margin: 60px; /* increased margin */
+        }
+
+        .filter-section {
+            margin-bottom: 50px; /* increased bottom margin */
+        }
+
+        .filter-section h3 {
+            font-size: 1.7rem; /* increased font size */
+            margin-bottom: 30px; /* increased bottom margin */
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* increased gap */
+            flex-wrap: wrap;
+        }
+
+        .icon-box {
+            width: 120px; /* increased width */
+            height: 120px; /* increased height */
+            background-color: #fff;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .icon-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .icon-box img {
+            width: 60px; /* increased image size */
+            height: 60px; /* increased image size */
+        }
+
+        .range-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* increased gap */
+            flex-wrap: wrap;
+        }
+
+        .range-box {
+            padding: 15px 25px; /* increased padding */
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .range-box:hover {
+            background-color: #ff9800;
+            color: #fff;
+        }
+
+        .price-filters {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* increased gap */
+            margin-top: 30px; /* increased margin */
+        }
+
+        .price-box {
+            padding: 15px 30px; /* increased padding */
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .price-box:hover {
+            background-color: #ff9800;
+            color: #fff;
+        }
+
+        .results {
+            margin: 60px auto; /* increased margin */
+            text-align: center;
+        }
+
+        .results table {
+            width: 100%;
+            max-width: 900px; /* increased max-width */
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .results th,
+        .results td {
+            padding: 20px; /* increased padding */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .results th {
+            background-color: #f4f4f9;
+            font-weight: bold;
+        }
+
+        .results tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <header>Influencers</header>
+
+    <div class="search-container">
+        <input type="text" placeholder="Search">
+    </div>
+
+    <div class="benefits">
+        <h2>Why Find the Right Influencers?</h2>
+        <p>Partnering with the right influencers can help amplify your brand message, reach your target audience, and boost your sales. Discover influencers who align with your brand values and marketing goals.</p>
+    </div>
+
+    <div class="filters">
+        <!-- Choose Platform Section -->
+        <div class="filter-section">
+            <h3>Choose Platform</h3>
+            <div class="icon-container">
+                <div class="icon-box">
+                    <img src="https://img.icons8.com/ios/452/youtube.png" alt="YouTube">
+                </div>
+                <div class="icon-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </div>
+                <div class="icon-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram">
+                </div>
+                <div class="icon-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+                </div>
+                <div class="icon-box">
+                    <img src="https://img.icons8.com/ios/452/twitter.png" alt="Twitter">
+                </div>
+            </div>
+        </div>
+
+        <!-- Engagement Section -->
+        <div class="filter-section">
+            <h3>Engagement</h3>
+            <div class="range-boxes">
+                <div class="range-box">0-10k Followers</div>
+                <div class="range-box">10k-50k Followers</div>
+                <div class="range-box">50k-100k Followers</div>
+                <div class="range-box">100k+ Followers</div>
+            </div>
+        </div>
+
+        <!-- Price Range Section -->
+        <div class="filter-section">
+            <h3>Price Range</h3>
+            <div class="price-filters">
+                <div class="price-box">High to Low</div>
+                <div class="price-box">Low to High</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results">
+        <h3>Results</h3>
+        <table>
+            <tr>
+                <th>Influencer Name</th>
+                <th>Platform</th>
+                <th>Followers</th>
+                <th>Price</th>
+            </tr>
+            <!-- Empty rows as placeholders -->
+        </table>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 80%;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-box img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box a {
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .contact-box a:hover {
+            color: #ff9800;
+        }
+
+        .form-section {
+            margin-top: 40px;
+        }
+
+        .form-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            height: 150px;
+            padding: 12px;
+        }
+
+        .form-button {
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-button:hover {
+            background-color: #f57c00;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>We would love to hear from you! Whether you have a question, suggestion, or just want to get in touch, feel free to contact us using the methods below.</p>
+        
+        <div class="contact-options">
+            <!-- Contact via Email -->
+            <div class="contact-box">
+                <img src="https://img.icons8.com/ios/452/email.png" alt="Email">
+                <a href="mailto:zuhayer98@gmail.com">Email Us</a>
+            </div>
+            <!-- Contact via WhatsApp -->
+            <div class="contact-box">
+                <img src="https://img.icons8.com/ios/452/whatsapp.png" alt="WhatsApp">
+                <a href="https://wa.me/11234567890" target="_blank">WhatsApp</a>
+            </div>
+            <!-- Contact via Telegram -->
+            <div class="contact-box">
+                <img src="https://img.icons8.com/ios/452/telegram.png" alt="Telegram">
+                <a href="https://t.me/yourusername" target="_blank">Telegram</a>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div class="form-section">
+            <h2>Send Us a Message</h2>
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Your Name" class="form-input" required>
+                <input type="email" name="email" placeholder="Your Email" class="form-input" required>
+                <textarea name="message" placeholder="Your Message" class="form-textarea" required></textarea>
+                <button type="submit" class="form-button">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thank you for reaching out! We'll get back to you as soon as possible.</p>
+        </div>
+    </div>
+
+</body>
+</html>
