@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><i>INSMET</i></title>
+    <title>INSMET</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,17 +11,18 @@
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
         }
         header {
             background-color: #e9f1e9;
-            padding: 20px 0;
+            padding: clamp(10px, 5vw, 20px) 0;
             text-align: center;
             border-bottom: 2px solid #fdfdfd;
             position: relative;
         }
         header h1 {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: bold;
             color: #000000;
             -webkit-text-stroke: 1px rgb(255, 255, 255);
@@ -50,14 +51,14 @@
             justify-content: center;
             flex-direction: row;
             margin: 0;
-            padding: 10px 0;
+            padding: clamp(5px, 3vw, 10px) 0;
         }
         .sidebar nav a {
             color: #ffffff;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 clamp(10px, 3vw, 15px);
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
         .sidebar nav a:hover {
             color: #ff9800;
@@ -67,7 +68,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             color: #000000;
             background: none;
             border: none;
@@ -76,31 +77,32 @@
         }
 
         section {
-            padding: 20px 40px;
+            padding: clamp(10px, 5vw, 40px);
             text-align: center;
         }
 
         section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: clamp(10px, 3vw, 20px);
         }
 
         section p {
-            font-size: 1.1rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             line-height: 1.6;
         }
 
         .platform-boxes {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: clamp(15px, 5vw, 30px);
+            margin-top: clamp(15px, 5vw, 30px);
             flex-wrap: wrap;
         }
 
         .platform-box {
-            width: 180px;
-            height: 180px;
+            width: clamp(120px, 15vw, 180px);
+            height: clamp(120px, 15vw, 180px);
             background-color: #ffffff;
             color: white;
             border-radius: 15px;
@@ -117,39 +119,40 @@
         }
 
         .platform-box img {
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 5vw, 50px);
+            height: clamp(40px, 5vw, 50px);
         }
 
         .genre-header {
-            font-size: 2rem;
-            margin-top: 40px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-top: clamp(20px, 5vw, 40px);
         }
 
         .genre-container {
             position: relative;
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: clamp(10px, 3vw, 20px);
         }
 
         .genre-boxes {
             display: flex;
-            gap: 20px;
+            gap: clamp(10px, 3vw, 20px);
             overflow: hidden;
             white-space: nowrap;
             transition: transform 0.5s ease-in-out;
-            width: 80%; /* Limit the width to display only 5 items */
+            width: 80%;
         }
 
         .genre-box {
             background-color: #f1f1f1;
             color: black;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: clamp(5px, 2vw, 10px) clamp(10px, 3vw, 20px);
             border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
         }
 
         .genre-box:hover {
@@ -162,10 +165,10 @@
             transform: translateY(-50%);
             background-color: white;
             color: black;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             border: none;
             cursor: pointer;
-            padding: 10px 15px;
+            padding: clamp(5px, 2vw, 10px);
             border-radius: 50%;
             z-index: 2;
         }
@@ -182,60 +185,35 @@
             background-color: #000000;
             color: white;
             text-align: center;
-            padding: 10px;
-            font-size: 1rem;
+            padding: clamp(10px, 5vw, 20px);
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
         }
 
-        @media (max-width: 768px) {
-            section p {
-                font-size: 1rem;
-            }
-
-            .platform-box {
-                width: 150px;
-                height: 150px;
-            }
-
-            .genre-box {
-                font-size: 1rem;
-            }
-        }
         .facility-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 30px;
-        flex-wrap: wrap;
-    }
-
-    .facility-box {
-        background-color: #f1f1f1;
-        color: black;
-        font-size: 1.2rem;
-        font-weight: bold;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        width: 200px;
-        height: 100px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Remove hover effect */
-    .facility-box:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    @media (max-width: 768px) {
-        .facility-box {
-            width: 150px;
-            height: auto;
-            font-size: 1rem;
-            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 3vw, 20px);
+            margin-top: clamp(15px, 5vw, 30px);
+            flex-wrap: wrap;
         }
-    }
 
+        .facility-box {
+            background-color: #f1f1f1;
+            color: black;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: bold;
+            padding: clamp(10px, 3vw, 20px);
+            border-radius: 10px;
+            text-align: center;
+            width: clamp(150px, 20vw, 200px);
+            height: clamp(80px, 10vw, 100px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .facility-box:hover {
+            transform: none;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
@@ -279,94 +257,45 @@
 
         <h2 class="genre-header">GENRE</h2>
         <div class="genre-container">
-            <button class="arrow arrow-left" onclick="moveGenres('left')">&#8592;</button>
-            <div class="genre-boxes" id="genre-boxes">
-                <div class="genre-box">Self Development</div>
-                <div class="genre-box">Islamic</div>
-                <div class="genre-box">Documentaries</div>
-                <div class="genre-box">Tutorial</div>
-                <div class="genre-box">Explainer</div>
-                <div class="genre-box">Science</div>
-                <div class="genre-box">Politics</div>
-                <div class="genre-box">History</div>
-                <div class="genre-box">Review</div>
+            <div class="genre-box">Self Development</div>
+            <div class="genre-box">Islamic</div>
+            <div class="genre-box">Documentaries</div>
+            <div class="genre-box">Tutorial</div>
+            <div class="genre-box">Explainer</div>
+            <div class="genre-box">Science</div>
+            <div class="genre-box">Politics</div>
+            <div class="genre-box">History</div>
+            <div class="genre-box">Review</div>
+        </div>
+
+        <h2>Our Facilities</h2>
+        <div class="facility-container">
+            <div class="facility-box">
+                <p>Completely Free</p>
             </div>
-            <button class="arrow arrow-right" onclick="moveGenres('right')">&#8594;</button>
+            <div class="facility-box">
+                <p>Easy To Use</p>
+            </div>
+            <div class="facility-box">
+                <p>We Do Not Suck</p>
+            </div>
+            <div class="facility-box">
+                <p>Find Brands And Influencers Successfully</p>
+            </div>
         </div>
-       <!-- Our Facilities Section -->
-       <h2>Our Facilities</h2>
-    <div class="facility-container">
-        <div class="facility-box">
-            <p>Completely Free</p>
-        </div>
-        <div class="facility-box">
-            <p>Easy To Use</p>
-        </div>
-        <div class="facility-box">
-            <p>We Do Not Suck</p>
-        </div>
-        <div class="facility-box">
-            <p>Find Brands And Influencers Successfully</p>
-        </div>
-    </div>
+
 
 
     </section>
 
     <footer>
-        <p>&copy; INSMET <br> 2025 <br> All rights reserved.</p>
+        <p style="font: -apple-system, BlinkMacSystemFont,  Roboto, Helvetica Neue, Arial, sans-serif;">&copy; INSMET <br style="font: -apple-system, BlinkMacSystemFont,  Roboto, Helvetica Neue, Arial, sans-serif;"> 2025 <br style="font: -apple-system, BlinkMacSystemFont,  Roboto, Helvetica Neue, Arial, sans-serif;"> All rights reserved.</p>
     </footer>
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('active');
         }
-
-        let currentIndex = 0;
-        const genreBoxes = document.getElementById('genre-boxes');
-        const genreItems = document.querySelectorAll('.genre-box');
-        const totalGenres = genreItems.length;
-        const arrowLeft = document.querySelector('.arrow-left');
-        const arrowRight = document.querySelector('.arrow-right');
-
-        function calculateVisibleGenres() {
-            const containerWidth = document.querySelector('.genre-container').clientWidth;
-            const genreBoxWidth = genreItems[0].offsetWidth + 20; // Include margin
-            return Math.floor(containerWidth / genreBoxWidth);
-        }
-
-        function updateArrows() {
-            const visibleGenres = calculateVisibleGenres();
-
-            arrowLeft.style.display = currentIndex === 0 ? 'none' : 'block';
-            arrowRight.style.display = currentIndex + visibleGenres >= totalGenres ? 'none' : 'block';
-
-            if (visibleGenres >= totalGenres) {
-                currentIndex = 0;
-                genreBoxes.style.transform = `translateX(0px)`;
-            }
-        }
-
-        function moveGenres(direction) {
-            const visibleGenres = calculateVisibleGenres();
-            const genreBoxWidth = genreItems[0].offsetWidth + 20; // Include margin
-
-            if (direction === 'left' && currentIndex > 0) {
-                currentIndex--;
-            } else if (direction === 'right' && currentIndex + visibleGenres < totalGenres) {
-                currentIndex++;
-            }
-
-            const newTransform = -(currentIndex * genreBoxWidth);
-            genreBoxes.style.transform = `translateX(${newTransform}px)`;
-
-            updateArrows();
-        }
-
-        window.addEventListener('resize', updateArrows);
-        updateArrows();
-
-
 
 
 
