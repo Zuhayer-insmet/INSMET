@@ -9,6 +9,22 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+            /* Mobile navigation dropdown menu */
+    #nav {
+        z-index: 50; /* Ensure it appears above other content */
+    }
+    
+    /* Ensure the navigation menu looks good on mobile */
+    @media (max-width: 768px) {
+        #nav {
+            position: absolute;
+            background-color: var(--color-1); /* Same as header background */
+            width: 100%; /* Take full width on mobile */
+            top: 0;
+            left: 0;
+            padding-top: 60px; /* Space below the header */
+        }
+    }
 /* Ensure the video covers the entire screen without distortion */
 video {
     object-fit: cover; /* Make sure the video covers the section */
@@ -72,21 +88,23 @@ section::before {
 
     <!-- Header Section -->
     <header class="bg-color- py-10">
-        <div class="container mx-auto flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center flex-wrap px-6">
             <h1 class="text-5xl font-extrabold text-color-5">Insmet</h1>
-             <!-- Hamburger Button (visible on mobile) -->
+            <!-- Hamburger Button (visible on mobile) -->
             <button id="hamburger" class="block md:hidden text-color-5 text-2xl">
                 &#9776; <!-- Hamburger Icon -->
             </button>
-            <nav class="hidden md:flex space-x-8 text-lg text-color-5">
-                <a href="find influencer.html" class="hover:text-color-5 transition duration-300">Find Influencers</a>
-                <a href="find brands.html" class="hover:text-color-5 transition duration-300">Find Sponsors</a>
-                <a href="transaction page.html" class="hover:text-color-5 transition duration-300">Transactions</a>
-                <a href="contact us page.html" class="hover:text-color-5 transition duration-300">Contact Us</a>
+            <!-- Navigation Links -->
+            <nav id="nav" class="hidden absolute   top-16 left-0 w-full  bg-color-1 flex-col md:flex md:relative md:flex-row md:space-y-0 space-y-1 md:space-x-8 text-lg text-color-5 md:bg-transparent md:static px-8">
+                <a href="find influencer.html" class="hover:text-color-4 transition duration-300">Find Influencers</a>
+                <a href="find brands.html" class="hover:text-color-4 transition duration-300">Find Sponsors</a>
+                <a href="transaction page.html" class="hover:text-color-4 transition duration-300">Transactions</a>
+                <a href="contact us page.html" class="hover:text-color-4 transition duration-300">Contact Us</a>
+               
             </nav>
-            <a href="#services" class="inline-block md:hidden text-color-1 bg-color-5 py-2 px-6 rounded-lg hover:bg-color-3 transition duration-300">Get Started</a>
         </div>
     </header>
+    
 
 <!-- Hero Section with Video Background -->
 <section class="relative w-full h-screen ">
@@ -186,14 +204,19 @@ section::before {
         </div>
     </footer>
     <script>
-        // Toggle the visibility of the navigation menu
         const hamburger = document.getElementById("hamburger");
         const nav = document.getElementById("nav");
-
+    
+        // Toggle dropdown menu visibility
         hamburger.addEventListener("click", () => {
-            nav.classList.toggle("hidden");
+            nav.classList.toggle("hidden"); // Add/remove the `hidden` class
+            nav.classList.toggle("flex");  // Ensure the nav is displayed as a flex container
         });
     </script>
+    
+
+    
+    
 
 
 </body>
