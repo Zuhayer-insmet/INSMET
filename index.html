@@ -3,291 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSMET</title>
+    <title>Insmet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-        }
-        header {
-            background-color: #e9f1e9;
-            padding: clamp(10px, 5vw, 20px) 0;
-            text-align: center;
-            border-bottom: 2px solid #fdfdfd;
-            position: relative;
-        }
-        header h1 {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: bold;
-            color: #000000;
-            -webkit-text-stroke: 1px rgb(255, 255, 255);
-            text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3);
-        }
-
-        .sidebar {
-            position: relative;
-            top: 0;
-            width: 100%;
-            background-color: #000000;
-            color: white;
-            display: flex;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-            z-index: 1000;
-        }
-        .sidebar.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .sidebar nav {
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-            margin: 0;
-            padding: clamp(5px, 3vw, 10px) 0;
-        }
-        .sidebar nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 clamp(10px, 3vw, 15px);
-            font-weight: bold;
-            font-size: clamp(1rem, 2vw, 1.2rem);
-        }
-        .sidebar nav a:hover {
-            color: #ff9800;
-        }
-
-        .sidebar-toggle {
+        /* Ensure the video covers the entire screen without distortion */
+        video {
+            object-fit: cover; /* Make sure the video covers the section */
             position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: #000000;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Place the video behind other content */
         }
 
-        section {
-            padding: clamp(10px, 5vw, 40px);
-            text-align: center;
+        /* Optional: You can add a dark overlay to enhance text visibility */
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+            z-index: -1; /* Place the overlay below text */
         }
 
-        section h2 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: clamp(10px, 3vw, 20px);
+        :root {
+            --color-1: #1c1c1c;
+            --color-2: #3b3b3b;
+            --color-3: #5c5c5c;
+            --color-4: #bfbfbf;
+            --color-5: #ffffff;
         }
 
-        section p {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            line-height: 1.6;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-1);
+            color: var(--color-4);
         }
 
-        .platform-boxes {
-            display: flex;
-            justify-content: center;
-            gap: clamp(15px, 5vw, 30px);
-            margin-top: clamp(15px, 5vw, 30px);
-            flex-wrap: wrap;
-        }
+        .text-color-1 { color: var(--color-1); }
+        .text-color-2 { color: var(--color-2); }
+        .text-color-3 { color: var(--color-3); }
+        .text-color-4 { color: var(--color-4); }
+        .text-color-5 { color: var(--color-5); }
 
-        .platform-box {
-            width: clamp(120px, 15vw, 180px);
-            height: clamp(120px, 15vw, 180px);
-            background-color: #ffffff;
-            color: white;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .platform-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .platform-box img {
-            width: clamp(40px, 5vw, 50px);
-            height: clamp(40px, 5vw, 50px);
-        }
-
-        .genre-header {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-top: clamp(20px, 5vw, 40px);
-        }
-
-        .genre-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            margin-top: clamp(10px, 3vw, 20px);
-        }
-
-        .genre-boxes {
-            display: flex;
-            gap: clamp(10px, 3vw, 20px);
-            overflow: hidden;
-            white-space: nowrap;
-            transition: transform 0.5s ease-in-out;
-            width: 80%;
-        }
-
-        .genre-box {
-            background-color: #f1f1f1;
-            color: black;
-            font-weight: bold;
-            padding: clamp(5px, 2vw, 10px) clamp(10px, 3vw, 20px);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-        }
-
-        .genre-box:hover {
-            background-color: #ff9800;
-        }
-
-
-
-        footer {
-            background-color: #000000;
-            color: white;
-            text-align: center;
-            padding: clamp(10px, 5vw, 20px);
-            font-size: clamp(0.8rem, 1.5vw, 1rem);
-        }
-
-        .facility-container {
-            display: flex;
-            justify-content: center;
-            gap: clamp(10px, 3vw, 20px);
-            margin-top: clamp(15px, 5vw, 30px);
-            flex-wrap: wrap;
-        }
-
-        .facility-box {
-            background-color: #f1f1f1;
-            color: black;
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            font-weight: bold;
-            padding: clamp(10px, 3vw, 20px);
-            border-radius: 10px;
-            text-align: center;
-            width: clamp(150px, 20vw, 200px);
-            height: clamp(80px, 10vw, 100px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .facility-box:hover {
-            transform: none;
-            box-shadow: none;
-        }
+        .bg-color-1 { background-color: var(--color-1); }
+        .bg-color-2 { background-color: var(--color-2); }
+        .bg-color-3 { background-color: var(--color-3); }
+        .bg-color-4 { background-color: var(--color-4); }
+        .bg-color-5 { background-color: var(--color-5); }
     </style>
 </head>
-<body>
-    <header>
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-        <h1>INSMET</h1>
+<body class="bg-color-5 text-color-2">
+
+    <!-- Header Section -->
+    <header class="bg-color- py-10">
+        <div class="container mx-auto flex justify-between items-center flex-wrap px-6">
+            <h1 class="text-5xl font-extrabold text-color-5">Insmet</h1>
+            <nav class="hidden md:flex space-x-8 text-lg text-color-5">
+                <a href="find influencer.html" class="hover:text-color-5 transition duration-300">Find Influencers</a>
+                <a href="find brands.html" class="hover:text-color-5 transition duration-300">Find Sponsors</a>
+                <a href="transaction page.html" class="hover:text-color-5 transition duration-300">Transactions</a>
+                <a href="contact us page.html" class="hover:text-color-5 transition duration-300">Contact Us</a>
+            </nav>
+            <a href="#services" class="inline-block md:hidden text-color-1 bg-color-5 py-2 px-6 rounded-lg hover:bg-color-3 transition duration-300">Get Started</a>
+        </div>
     </header>
 
-    <div class="sidebar" id="sidebar">
-        <nav>
-            <a href="find influencer.html" target="_blank">Find Influencers</a>
-            <a href="find brands.html" target="_blank">Find Sponsors</a>
-            <a href="transaction page.html" target="_blank">Transactions</a>
-            <a href="contact us page.html" target="_blank">Contact Us</a>
-        </nav>
-    </div>
-
-    <section>
-        <p>
-            Welcome to Insmet.<br> We bridge the gap between influencers and sponsors, 
-            creating seamless partnerships for online marketing success.<br> Our platform helps 
-            influencers find lucrative sponsorship opportunities while enabling brands to collaborate 
-            with the best talents in their niche. 
-        </p><br>
-
-        <h2>Platforms</h2>
-        <div class="platform-boxes">
-            <div class="platform-box">
-                <img src="https://img.icons8.com/ios/452/youtube.png" alt="YouTube">
-            </div>
-            <div class="platform-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-            </div>
-            <div class="platform-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram">
-            </div>
-            <div class="platform-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-            </div>
+    <!-- Hero Section with Video Background -->
+    <section class="relative w-full h-screen">
+        <!-- Video Background -->
+        <video autoplay muted loop class="absolute w-full h-full object-cover">
+            <source src="140579-775389252.mp4" type="video/mp4">
+            <!-- Fallback content in case video isn't supported -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Overlay Content (Text, Buttons, etc.) -->
+        <div class="container mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 px-6">
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Welcome to Insmet</h2>
+            <p class="text-lg sm:text-2xl text-white mt-4">Connecting Brands with Influencers for Next-Level Marketing</p>
+            <a href="#services" class="mt-6 inline-block bg-color-5 text-color-1 py-3 px-8 rounded-lg hover:bg-color-4 transition duration-300">
+                Get Started
+            </a>
         </div>
-
-    <div class="section-container">
-        <h3 class="section-title">GENRE</h3>
-        <div class="rounded-boxes">
-            <div class="rounded-box">Gym</div>
-            <div class="rounded-box">Gardening</div>
-            <div class="rounded-box">Islamic</div>
-            <div class="rounded-box">Finance</div>
-            <div class="rounded-box">Health & Wellness</div>
-            <div class="rounded-box">Technology</div>
-            <div class="rounded-box">Fashion</div>
-            <div class="rounded-box">Food & Drink</div>
-        </div>
-    </div>
-
-        <h2>Our Facilities</h2>
-        <div class="facility-container">
-            <div class="facility-box">
-                <p>Completely Free</p>
-            </div>
-            <div class="facility-box">
-                <p>Easy To Use</p>
-            </div>
-            <div class="facility-box">
-                <p>We Do Not Suck</p>
-            </div>
-            <div class="facility-box">
-                <p>Find Brands And Influencers Successfully</p>
-            </div>
-        </div>
-
-
-
     </section>
 
-    <footer>
-        <p style="font: -apple-system, BlinkMacSystemFont,  Roboto, Helvetica Neue, Arial, sans-serif;">&copy; INSMET <br style="font: -apple-system, BlinkMacSystemFont,  Roboto, Helvetica Neue, Arial, sans-serif;"> 2025 <br style="font: -apple-system, BlinkMacSystemFont,  Roboto, Helvetica Neue, Arial, sans-serif;"> All rights reserved.</p>
+    <!-- Services Section -->
+    <section id="services" class="container mx-auto mt-20 p-8">
+        <h2 class="text-4xl font-semibold text-center text-color-3">Our Services</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-10">
+            <!-- Add Service Blocks Here -->
+        </div>
+    </section>
+
+    <!-- Influencers' Platforms Section -->
+    <section class="container mx-auto mt-20 p-8">
+        <h2 class="text-4xl font-semibold text-center text-color-3">Influencers from Platforms</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 mt-10">
+            <div class="p-6 rounded-lg shadow-lg bg-color-5">
+                <img src="https://img.icons8.com/ios/452/youtube.png" alt="YouTube" class="w-20 h-20 mx-auto">
+                <p class="text-center mt-4 text-xl text-color-3">YouTube</p>
+            </div>
+            <div class="p-6 rounded-lg shadow-lg bg-color-5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="w-20 h-20 mx-auto">
+                <p class="text-center mt-4 text-xl text-color-3">Facebook</p>
+            </div>
+            <div class="p-6 rounded-lg shadow-lg bg-color-5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" class="w-20 h-20 mx-auto">
+                <p class="text-center mt-4 text-xl text-color-3">Instagram</p>
+            </div>
+            <div class="p-6 rounded-lg shadow-lg bg-color-5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="w-20 h-20 mx-auto">
+                <p class="text-center mt-4 text-xl text-color-3">Telegram</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands from Sectors Section -->
+    <section class="container mx-auto mt-20 p-8">
+        <h2 class="text-4xl font-semibold text-center text-color-3">Brands from Sectors</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 mt-10">
+            <div class="p-6 rounded-lg bg-color-5">
+                <p class="text-center text-xl text-color-3">Gardening</p>
+            </div>
+            <div class="p-6 rounded-lg bg-color-5">
+                <p class="text-center text-xl text-color-3">Islamic</p>
+            </div>
+            <div class="p-6 rounded-lg bg-color-5">
+                <p class="text-center text-xl text-color-3">Technology</p>
+            </div>
+            <div class="p-6 rounded-lg bg-color-5">
+                <p class="text-center text-xl text-color-3">Health</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-color-1 text-color-5 py-7">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Insmet. All rights reserved.</p>
+        </div>
     </footer>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('active');
-        }
-
-
-
-
-    </script>
-
-
-
-
-
-
 
 </body>
 </html>
