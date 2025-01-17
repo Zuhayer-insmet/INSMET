@@ -96,22 +96,36 @@ section::before {
 <body class="bg-color-5 text-color-2">
 
     <!-- Header Section -->
-    <header class="bg-color- py-10">
+    <header class="bg-color- py-5">
         <div class="container mx-auto flex justify-between items-center px-6">
-
-            <h1 class="text-5xl font-extrabold text-color-5">Insmet</h1>
-            <!-- Hamburger Button for Mobile -->
-            <button id="hamburger" class="block md:hidden text-color-5 text-2xl">
-                &#9776; <!-- Default Hamburger Icon -->
-            </button>
+            <!-- Title -->
+            <h1 class="text-5xl font-extrabold text-color-5 leading-none">Insmet</h1>
+    
             <!-- Navigation Links -->
-            <nav id="nav" class="hidden absolute top-16 left-0 w-full bg-color-1 flex-col md:flex md:relative md:flex-row md:space-y-0 space-y-4 md:space-x-8 text-lg text-color-5 md:bg-transparent md:static px-6">
+            <nav id="mobile-nav" class="hidden md:flex space-x-8 text-lg text-color-5 items-center">
                 <a href="find influencer.html" class="hover:text-color-4 transition duration-300">Find Influencers</a>
                 <a href="find brands.html" class="hover:text-color-4 transition duration-300">Find Sponsors</a>
                 <a href="transaction page.html" class="hover:text-color-4 transition duration-300">Transactions</a>
                 <a href="contact us page.html" class="hover:text-color-4 transition duration-300">Contact Us</a>
-                
             </nav>
+    
+            <!-- Hamburger Button -->
+            <button id="hamburger" class="block md:hidden text-color-5 text-2xl">
+                &#9776; <!-- Default Hamburger Icon -->
+            </button>
+    
+            <!-- Close Button -->
+            <button id="close-hamburger" class="hidden md:hidden text-color-5 text-2xl">
+                &times; <!-- Close Icon -->
+            </button>
+        </div>
+    
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-color-1 text-color-5 shadow-lg">
+            <a href="find influencer.html" class="block py-3 px-6 hover:bg-color-2">Find Influencers</a>
+            <a href="find brands.html" class="block py-3 px-6 hover:bg-color-2">Find Sponsors</a>
+            <a href="transaction page.html" class="block py-3 px-6 hover:bg-color-2">Transactions</a>
+            <a href="contact us page.html" class="block py-3 px-6 hover:bg-color-2">Contact Us</a>
         </div>
     </header>
     
@@ -157,7 +171,7 @@ section::before {
                 <h3 class="text-2xl font-bold text-color-3">Efficient Matchmaking</h3>
                 <p class="mt-3 text-lg text-color-2">Our database and AI ensure perfect matchmaking of brands and influencers.</p>
             </div>
-            <div class="flex flex-col items-center text-center p-6 border border-color-2 rounded-lg shadow-lg">
+            <div class="flex flex-col items-center text-center p-6 border border-color-2 rounded-lg shadow-lg" style="align-self: center;" style="align-items: center;" style="align-content: center;" style="box-align: center;">
                 <img src="https://via.placeholder.com/150" alt="Service 4" class="rounded-full mb-4 w-32 h-32">
                 <h3 class="text-2xl font-bold text-color-3" >Ease Transfer</h3>
                 <p class="mt-3 text-lg text-color-2">Secure and fast transfer of payments between brands and influencers.</p>
@@ -214,18 +228,24 @@ section::before {
         </div>
     </footer>
     <script>
-        const hamburger = document.getElementById("hamburger");
-        const nav = document.getElementById("nav");
-        let isMenuOpen = false;
+    const hamburger = document.getElementById('hamburger');
+    const closeHamburger = document.getElementById('close-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
     
-        hamburger.addEventListener("click", () => {
-            isMenuOpen = !isMenuOpen;
-            nav.classList.toggle("hidden");
-            nav.classList.toggle("flex");
-            hamburger.innerHTML = isMenuOpen ? "&#x2715;" : "&#9776;"; // Toggle between X and Hamburger
-        });
+    // Open mobile menu
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        hamburger.classList.add('hidden');
+        closeHamburger.classList.remove('hidden');
+    });
+    
+    // Close mobile menu
+    closeHamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburger.classList.remove('hidden');
+        closeHamburger.classList.add('hidden');
+    });
     </script>
-    
     
 
     
